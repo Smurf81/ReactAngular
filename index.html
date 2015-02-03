@@ -1,0 +1,47 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <script src="bower_components/angular/angular.js"  ></script>
+        <script src="bower_components/react/react.js"> </script>
+        <script src="bower_components/ngReact/ngReact.js"></script>
+
+        <script src="app.js" ></script>
+        <script src="react/build/react_component.js"></script>
+
+        <link rel="stylesheet" href="style/css/ionic.css">
+
+        <div ng-app="AngularReact" ng-controller="MainCtrl">
+            <h3> Angular Filter <span style="font-size: 10px" ng-click="showAngularFilter=!showAngularFilter">({{showAngularFilter?'Hide':'Show'}})</span></h3>
+
+            <div ng-show="showAngularFilter">
+
+                <div class="list list-inset" >
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="TEXT" ng-model="search">
+                    </label>
+                </div>
+
+                <div class='list' >
+                    <a class='item item-avatar' href="javascript:void(0)" ng-repeat="contact in result">
+                        <img ng-src="{{contact.photo}}"/><h2>{{contact.displayName}}</h2>
+                    </a>
+                </div>
+
+            </div>
+
+            <h3> Result in React Without $scope <span style="font-size: 10px" ng-click="showReactFilterWithoutScope=!showReactFilterWithoutScope">({{showReactFilterWithoutScope?'Hide':'Show'}})</span></h3>
+
+            <div style="overflow-y:scroll" ng-show="showReactFilterWithoutScope">
+                <List contacts="result" />
+            </div>
+
+            <h3> Result in React with $scope <span style="font-size: 10px" ng-click="showReactFilterWithScope=!showReactFilterWithScope">({{showReactFilterWithScope?'Hide':'Show'}})</span></h3>
+
+            <div id="reactExample" ng-show="showReactFilterWithScope"></div>
+
+        </div>
+    </body>
+</html>
+
